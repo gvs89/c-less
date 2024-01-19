@@ -14,4 +14,3 @@ PrintSquares(15);
 
 
 
-
