@@ -44,7 +44,9 @@ Console.WriteLine("Введите число n:");
 int secondNumber = Convert.ToInt32(Console.ReadLine());
 
 Console.WriteLine($"Значение по фукнкции Аккермана ({firstNumber},{secondNumber}) = {Ack(firstNumber, secondNumber)}");
+
 ///////////////////Task_3
+
 int[] CreateArray(int size, int max, int min)
 {
     int[] array = new int[size];
