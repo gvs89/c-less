@@ -2,7 +2,7 @@
 
 int [] CreateArray (int size, int max, int min){
             int [] array  = new int[size];
-            Random rand = new();
+            Random rand = new ();
             for (int i = 0; i < size; i++)
             {
                 array [i] = rand.Next(min,max+1);
@@ -26,7 +26,8 @@ int [] ArraySwap(int [] array,int index)
             return ArraySwap(array,index -= 2);
         }
 
-int [] array = CreateArray(10,10,0);
-System.Console.WriteLine("[" + PrintArray(array) + "]");
-System.Console.WriteLine("[" + PrintArray(ArraySwap(array,array.Length-1)) + "]");
+int [] array = CreateArray(10, 10, 0);
 
+
+Console.WriteLine("[" + PrintArray(array) + "]");
+Console.WriteLine("[" + PrintArray(ArraySwap(array,array.Length-1)) + "]");

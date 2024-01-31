@@ -1,70 +1,77 @@
-﻿//Task_1
+﻿/////////////////Task_1
 
-class Program
+string ShowDigit(int firstDigit, int secondDigit)
 {
-    static void Main()
+    if (firstDigit > secondDigit)
     {
-        int M = 1;
-        int N = 10;
-        Console.WriteLine(PrintNaturalNumbers(M, N));
+        return "";
     }
+    return $"{firstDigit} " + ShowDigit(firstDigit + 1, secondDigit);
+}
 
-    static string PrintNaturalNumbers(int M, int N)
+
+Console.WriteLine("Введите число M:");
+int firstNum = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите число N:");
+int secondNum = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine($"Числа от {firstNum} до {secondNum} => {ShowDigit(firstNum, secondNum)}");
+
+/////////////////Task_2
+
+int Ack(int m, int n)
+{
+    if (m == 0)
     {
-        if (M >= N)
-            return "";
+        return n + 1;
+    }
+    else
+    {
+        if (n == 0)
+        {
+            return Ack(m - 1, 1);
+        }
         else
         {
-            Console.WriteLine(M);
-            return PrintNaturalNumbers(M + 1, N);
+            return Ack(m - 1, Ack(m, n - 1));
         }
     }
 }
-//Task_2
-class Program
-{
-    static int Ackermann(int m, int n)
-    {
-        if (m == 0)
-            return n + 1;
-        if (n == 0)
-            return Ackermann(m - 1, 1);
-        return Ackermann(m - 1, Ackermann(m, n - 1));
-    }
 
-    static void Main()
-    {
-        Console.WriteLine(Ackermann(3, 4));
-    }
-}
+Console.WriteLine("Введите число m:");
+int firstNumber = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите число n:");
+int secondNumber = Convert.ToInt32(Console.ReadLine());
 
+Console.WriteLine($"Значение по фукнкции Аккермана ({firstNumber},{secondNumber}) = {Ack(firstNumber, secondNumber)}");
 ///////////////////Task_3
-int [] CreateArray (int size, int max, int min){
-            int [] array  = new int[size];
-            Random rand = new();
-            for (int i = 0; i < size; i++)
-            {
-                array [i] = rand.Next(min,max+1);
-            }
-            return array;
-        }
-string PrintArray(int [] array)
-        {
-            return string.Join(", ",array);
-        }
-int [] ArraySwap(int [] array,int index)
-        {
+int[] CreateArray(int size, int max, int min)
+{
+    int[] array = new int[size];
+    Random rand = new();
+    for (int i = 0; i < size; i++)
+    {
+        array[i] = rand.Next(min, max + 1);
+    }
+    return array;
+}
+string PrintArray(int[] array)
+{
+    return string.Join(", ", array);
+}
+int[] ArraySwap(int[] array, int index)
+{
 
-            if (index <= 0)
-            {
-                return array;
-            }
-            int temp = array[index];
-            array[index] = array[array.Length - index-1];
-            array[array.Length - index-1] = temp;
-            return ArraySwap(array,index -= 2);
-        }
+    if (index <= 0)
+    {
+        return array;
+    }
+    int temp = array[index];
+    array[index] = array[array.Length - index - 1];
+    array[array.Length - index - 1] = temp;
+    return ArraySwap(array, index -= 2);
+}
 
-int [] array = CreateArray(10,10,0);
+int[] array = CreateArray(10, 10, 0);
 System.Console.WriteLine("[" + PrintArray(array) + "]");
-System.Console.WriteLine("[" + PrintArray(ArraySwap(array,array.Length-1)) + "]");
+System.Console.WriteLine("[" + PrintArray(ArraySwap(array, array.Length - 1)) + "]");
